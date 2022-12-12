@@ -106,10 +106,8 @@ camera.position.y = 10;
 const INITIAL_MAP = [
     { childID: "Cube.116_0"},
     { childID: "Cube.116_1"},
-    
     { childID: "Cube.116_2"},
     { childID: "Cube.116_3"},
-    { childID: "Cube.116_4"},
   ];
 
 //test mtl+obj
@@ -179,7 +177,7 @@ loader.load( MODEL_PATH, function (gltf) {
     //try animation
     mixer = new THREE.AnimationMixer(theModel);
     const clips = gltf.animations;
-    const clip = THREE.AnimationClip.findByName(clips, 'Run');
+    const clip = THREE.AnimationClip.findByName(clips, 'Walk');
     const action = mixer.clipAction(clip);
     action.play();
   //   console.log(gltf.animations);
@@ -272,18 +270,18 @@ hemiLight.position.set(0, 50, 0);
 scene.add(hemiLight);
 
 //floor
-var floorGeometry = new THREE.BoxGeometry(500, 500, 5);
-var floorMaterial = new THREE.MeshPhongMaterial({
-  color: "#3cdf63",
-  // depthWrite: false,
-  shininess: 10,
-});
+//   var floorGeometry = new THREE.BoxGeometry(500, 500, 5);
+//   var floorMaterial = new THREE.MeshPhongMaterial({
+//     color: "#3cdf63",
+//     // depthWrite: false,
+//     shininess: 10,
+//   });
 
-var floor = new THREE.Mesh(floorGeometry, floorMaterial);
-floor.rotation.x = -0.5 * Math.PI;
-floor.receiveShadow = true;
-floor.position.set(0, 0, 0);
-scene.add(floor);
+//   var floor = new THREE.Mesh(floorGeometry, floorMaterial);
+//   floor.rotation.x = -0.5 * Math.PI;
+//   floor.receiveShadow = true;
+//   floor.position.set(0, 0, 0);
+//   scene.add(floor);
 
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.maxPolarAngle = Math.PI;
@@ -375,24 +373,6 @@ option4.addEventListener("click", (event) => {
   activeOption = option4.dataset.id;
   console.log(activeOption);
 });
-
-const option5 = document.querySelector(".option5");
-option5.addEventListener("click", (event) => {
-  activeOption = option5.dataset.id;
-  console.log(activeOption);
-});
-
-const option6 = document.querySelector(".option6");
-option6.addEventListener("click", (event) => {
-  activeOption = option6.dataset.id;
-  console.log(activeOption);
-});
-const option7 = document.querySelector(".option7");
-option7.addEventListener("click", (event) => {
-  activeOption = option7.dataset.id;
-  console.log(activeOption);
-});
-
 
 console.log(activeOption);
 
